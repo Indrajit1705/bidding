@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Details</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Enter Your Details</h1>
+    <form action="/save-details" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name"><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" pattern="[a-zA-Z]+.[a-zA-Z]+.MBA23@said.oxford.edu"  placeholder="first_name.last_name.MBA23@said.oxford.edu" required><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

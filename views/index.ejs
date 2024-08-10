@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxford Capstone Ticket</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Oxford Capstone Ticket</h1>
+    <p>Current Highest Bid: $<%= highestBid %></p>
+    <form action="/submit-bid" method="post">
+        <label for="bid">Enter Your Bid (+$5 of the current bid):</label>
+        <input type="number" id="bid" name="bid" min="<%= highestBid + 5 %>" required>
+        <button type="submit">Submit Bid</button>
+    </form>
+</body>
+</html>
