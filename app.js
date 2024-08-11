@@ -8,7 +8,7 @@ let highestBid = 0;
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public')); // Serve static files from the 'public' folder
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.render('index', { highestBid: highestBid });
@@ -38,7 +38,7 @@ app.post('/save-details', (req, res) => {
         },
     ];
 
-    const file = './bids.xlsx';
+    const file = '/tmp/bids.xlsx';  // Save to the temporary directory
     let workbook;
     let worksheet;
 
@@ -58,9 +58,17 @@ app.post('/save-details', (req, res) => {
     xlsx.utils.sheet_add_json(worksheet, data, { skipHeader: true, origin: -1 });
     xlsx.writeFile(workbook, file);
 
-    res.send('Details saved successfully!');
+    res.send('Details saved successfully! File is stored temporarily on the server.');
 });
 
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
+});
+app.get('/download-bids', (req, res) => {
+    const file = '/tmp/bids.xlsx';
+    res.download(file, 'bids.xlsx', (err) => {
+        if (err) {
+            res.status(500).send('Error downloading the file');
+        }
+    });
 });
