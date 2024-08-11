@@ -72,3 +72,16 @@ app.get('/download-bids', (req, res) => {
         }
     });
 });
+app.get('/download-bids', (req, res) => {
+    const file = '/tmp/bids.xlsx'; // Path where your Excel file is stored
+
+    if (fs.existsSync(file)) {
+        res.download(file, 'bids.xlsx', (err) => {
+            if (err) {
+                res.status(500).send('Error downloading the file.');
+            }
+        });
+    } else {
+        res.status(404).send('File not found.');
+    }
+});
