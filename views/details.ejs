@@ -8,12 +8,34 @@
 </head>
 <body>
     <h1>Enter Your Details</h1>
-    <form action="/save-details" method="post">
+    <form action="/save-details" method="POST" onsubmit="return validateForm()">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name"><br>
+        <input type="text" id="name" name="name" required>
+
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" pattern="[a-zA-Z]+.[a-zA-Z]+.MBA23@said.oxford.edu"  placeholder="first_name.last_name.MBA23@said.oxford.edu" required><br>
+        <input type="email" id="email" name="email" required>
+        <span id="email-error" style="color: red; display: none;">Enter your SBS email</span>
+
+        <label for="whatsapp">WhatsApp Number:</label>
+        <input type="tel" id="whatsapp" name="whatsapp" pattern="\d{10,15}" title="Enter a valid WhatsApp number (10-15 digits)" required>
+
         <button type="submit">Submit</button>
     </form>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[a-zA-Z]+\.[a-zA-Z]+\.MBA23@said\.oxford\.edu$/;
+            const errorSpan = document.getElementById('email-error');
+            
+            if (!emailPattern.test(email)) {
+                errorSpan.style.display = 'inline';
+                return false;
+            }
+
+            errorSpan.style.display = 'none';
+            return true;
+        }
+    </script>
 </body>
 </html>

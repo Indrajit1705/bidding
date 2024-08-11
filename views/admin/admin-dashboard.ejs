@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <p><h1>Current Highest Bid: $<%= highestBid %></h1></p>
+    <!-- Close Bid -->
+    <form action="/admin/close-bid" method="post">
+        <button type="submit">Close Bid</button>
+    </form>
+
+    <!-- Reset Bid -->
+    <form action="/admin/reset-bid" method="post">
+        <button type="submit">Reset Bid</button>
+    </form>
+
+    <!-- Download Excel Sheet -->
+    <form action="/admin/download-excel" method="get">
+        <button type="submit">Download Excel Sheet</button>
+    </form>
+
+    <!-- Change Password -->
+    <h2>Change Password</h2>
+    <form action="/admin/change-password" method="post">
+        <label for="old-password">Current Password:</label>
+        <input type="password" id="old-password" name="oldPassword" required><br>
+
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" name="newPassword" required><br>
+
+        <button type="submit">Change Password</button>
+    </form>
+
+    <!-- Logout -->
+    <form action="/admin-logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
