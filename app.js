@@ -64,14 +64,7 @@ app.post('/save-details', (req, res) => {
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
 });
-app.get('/download-bids', (req, res) => {
-    const file = '/tmp/bids.xlsx';
-    res.download(file, 'bids.xlsx', (err) => {
-        if (err) {
-            res.status(500).send('Error downloading the file');
-        }
-    });
-});
+
 app.get('/download-bids', (req, res) => {
     const file = '/tmp/bids.xlsx'; // Path where your Excel file is stored
 
