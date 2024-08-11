@@ -58,7 +58,7 @@ app.post('/save-details', (req, res) => {
     xlsx.utils.sheet_add_json(worksheet, data, { skipHeader: true, origin: -1 });
     xlsx.writeFile(workbook, file);
 
-    res.send('Details saved successfully! File is stored temporarily on the server.');
+    res.send('Details saved successfully!');
 });
 
 app.listen(3000, () => {
